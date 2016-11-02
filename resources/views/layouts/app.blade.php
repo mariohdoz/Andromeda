@@ -68,6 +68,17 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    <li>
+                                        <a href="{{ url('/config') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('config-form').submit();">
+                                            Configuración
+                                        </a>
+
+                                        <form id="config-form" action="{{ url('/config') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
                                 </ul>
                             </li>
                         @endif
@@ -80,6 +91,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="{{ asset('/js/app.js') }}"></script>
 </body>
 </html>
