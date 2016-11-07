@@ -23,3 +23,16 @@ Route::get('/logout', function() {
   Auth::logout();
   return redirect('/');
 });
+
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/admin', 'HomeController@index');
+
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/admin', 'HomeController@index');
+
+});
