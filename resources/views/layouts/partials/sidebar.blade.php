@@ -1,10 +1,6 @@
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
-
-    <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-
-        <!-- Sidebar user panel (optional) -->
         @if (! Auth::guest())
             <div class="user-panel">
                 <div class="pull-left image">
@@ -17,14 +13,20 @@
                 </div>
             </div>
         @endif
-
-
-
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-list-alt '></i> <span>Listado de herramientas</span></a></li>
+            <li class="treeview">
+                <a href="#"><i class='fa fa-cogs '></i> <span>Gestión de herramientas</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                  <li class="active"><a href="{{ url('home') }}"><i class='fa fa-plus '></i><span>Ingresar herramienta</span></a></li>
+                  <li class="active"><a href="{{ url('home') }}"><i class='fa fa-pencil '></i><span>Modificar herramienta</span></a></li>
+                  <li class="active"><a href="{{ url('home') }}"><i class='fa fa-minus  '></i><span>Eliminar herramienta</span></a></li>
+                  <li class="active"><a href="{{ url('home') }}"><i class='fa fa-cog '></i><span>Tipos de herramientas</span></a></li>
+                </ul>
+            </li>
             <li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li>
             <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.multilevel') }}</span> <i class="fa fa-angle-left pull-right"></i></a>

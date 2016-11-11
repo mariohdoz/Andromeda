@@ -1,0 +1,386 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+/*==============================================================*/
+/* Table: certificado                                           */
+/*==============================================================*/
+create table certificado
+(
+   idcert               int not null auto_increment,
+   idhta                int not null,
+   ruttec               varchar(10),
+   numtorquimetrocert   varchar(255) not null,
+   serietorquimetrometro varchar(255) not null,
+   numpartecert         char(100) not null,
+   numcert              varchar(100) not null,
+   validescert          varchar(100) not null,
+   proxmantencioncert   date not null,
+   fechaemisioncert     date not null,
+   primary key (idcert)
+);
+
+/*==============================================================*/
+/* Table: encargado                                             */
+/*==============================================================*/
+create table encargado
+(
+   rutenc               varchar(10) not null,
+   nombreenc            varchar(100) not null,
+   celularenc           varchar(13) not null,
+   correoenc            varchar(100) not null,
+   primary key (rutenc)
+);
+
+/*==============================================================*/
+/* Table: equipo                                                */
+/*==============================================================*/
+create table equipo
+(
+   idequi               int not null auto_increment,
+   nombreequi           varchar(100) not null,
+   primary key (idequi)
+);
+
+/*==============================================================*/
+/* Table: herramienta                                           */
+/*==============================================================*/
+create table herramienta
+(
+   idhta                int not null auto_increment,
+   id                   int,
+   idtipo               int,
+   codigohta            varchar(255) not null,
+   seriehta             varchar(255) not null,
+   estadohta            varchar(255) not null,
+   descripcionhta       varchar(255) not null,
+   fechaadquisicionhta  date not null,
+   lugartrabajohta      varchar(255) not null,
+   frecuenciamantencionhta varchar(25) not null,
+   tipotrabajohta       varchar(255),
+   primary key (idhta)
+);
+
+/*==============================================================*/
+/* Table: hojavida                                              */
+/*==============================================================*/
+create table hojavida
+(
+   idhv                 int not null auto_increment,
+   idhta                int,
+   idprop               int,
+   rutenc               varchar(10),
+   primary key (idhv)
+);
+
+/*==============================================================*/
+/* Table: lectura1                                              */
+/*==============================================================*/
+create table lectura1
+(
+   idlec1               int not null auto_increment,
+   idot                 int,
+   20lec1               int default 0,
+   25lec1               int default 0,
+   30lec1               int default 0,
+   35lec1               int default 0,
+   40lec1               int default 0,
+   45lec1               int default 0,
+   50lec1               int default 0,
+   55lec1               int default 0,
+   60lec1               int default 0,
+   65lec1               int default 0,
+   70lec1               int default 0,
+   75lec1               int default 0,
+   80lec1               int default 0,
+   85lec1               int default 0,
+   90lec1               int default 0,
+   primary key (idlec1)
+);
+
+/*==============================================================*/
+/* Table: lectura2                                              */
+/*==============================================================*/
+create table lectura2
+(
+   idlec1               int not null auto_increment,
+   idot                 int,
+   20lec2               int default 0,
+   25lec2               int default 0,
+   30lec2               int default 0,
+   35lec2               int default 0,
+   40lec2               int default 0,
+   45lec2               int default 0,
+   50lec2               int default 0,
+   55lec2               int default 0,
+   60lec2               int default 0,
+   65lec2               int default 0,
+   70lec2               int default 0,
+   75lec2               int default 0,
+   80lec2               int default 0,
+   85lec2               int default 0,
+   90lec2               int default 0,
+   primary key (idlec1)
+);
+
+/*==============================================================*/
+/* Table: lectura3                                              */
+/*==============================================================*/
+create table lectura3
+(
+   idlec1               int not null auto_increment,
+   idot                 int,
+   20lec3               int default 0,
+   25lec3               int default 0,
+   30lec3               int default 0,
+   35lec3               int default 0,
+   40lec3               int default 0,
+   45lec3               int default 0,
+   50lec3               int default 0,
+   55lec3               int default 0,
+   60lec3               int default 0,
+   65lec3               int default 0,
+   70lec3               int default 0,
+   75lec3               int default 0,
+   80lec3               int default 0,
+   85lec3               int default 0,
+   90lec3               int default 0,
+   primary key (idlec1)
+);
+
+/*==============================================================*/
+/* Table: manometro                                             */
+/*==============================================================*/
+create table manometro
+(
+   idmano               int not null auto_increment,
+   seriemano            varchar(100),
+   partemano            varchar(100),
+   marcamano            varchar(100),
+   modelomano           varchar(100),
+   unidadmano           varchar(50),
+   rangomano            varchar(50),
+   resolucionmano       varchar(50),
+   emisormano           varchar(100),
+   primary key (idmano)
+);
+
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+/*==============================================================*/
+/* Table: movimiento                                            */
+/*==============================================================*/
+create table movimiento
+(
+   idmov                int not null auto_increment,
+   idhta                int not null,
+   fechamov             date not null,
+   movimientomov        varchar(100),
+   razonmov             varchar(255),
+   documento            varchar(255),
+   primary key (idmov)
+);
+
+/*==============================================================*/
+/* Table: ot                                                    */
+/*==============================================================*/
+create table ot
+(
+   idot                 int not null auto_increment,
+   idhta                int,
+   idtor                int,
+   idmano               int,
+   20hta                int default 0,
+   25hta                int default 0,
+   30hta                int default 0,
+   35hta                int default 0,
+   40hta                int default 0,
+   45hta                int default 0,
+   50hta                int default 0,
+   55hta                int default 0,
+   60hta                int default 0,
+   65hta                int default 0,
+   70hta                int default 0,
+   75hta                int default 0,
+   80hta                int default 0,
+   85hta                int default 0,
+   90hta                int default 0,
+   primary key (idot)
+);
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+/*==============================================================*/
+/* Table: propietario                                           */
+/*==============================================================*/
+create table propietario
+(
+   idprop               int not null auto_increment,
+   nombreprop           varchar(100),
+   rutprop              varchar(10),
+   nombrepersprop       varchar(100),
+   celularprop          varchar(100),
+   primary key (idprop)
+);
+
+/*==============================================================*/
+/* Table: tecnico                                               */
+/*==============================================================*/
+create table tecnico
+(
+   ruttec               varchar(10) not null,
+   nombretec            varchar(100) not null,
+   celulartec           varchar(13) not null,
+   correotec            varchar(100) not null,
+   primary key (ruttec)
+);
+
+/*==============================================================*/
+/* Table: tipoherramienta                                       */
+/*==============================================================*/
+create table tipoherramienta
+(
+   idtipo               int not null auto_increment,
+   marcatipo            varchar(100) not null,
+   modelotipo           varchar(150) not null,
+   tipotipo             varchar(100) not null,
+   ottipo               bool default 0,
+   primary key (idtipo)
+);
+
+/*==============================================================*/
+/* Table: torquimetro                                           */
+/*==============================================================*/
+create table torquimetro
+(
+   idtor                int not null auto_increment,
+   serietor             varchar(100),
+   partetor             varchar(100),
+   marcator             varchar(100),
+   modelotor            varchar(100),
+   unidadtor            varchar(50),
+   rangotor             varchar(50),
+   resoluciontor        varchar(50),
+   emisortor            varchar(100),
+   primary key (idtor)
+);
+
+/*==============================================================*/
+/* Table: usa                                                   */
+/*==============================================================*/
+create table usa
+(
+   idusa                int not null auto_increment,
+   idcert               int not null,
+   idequi               int not null,
+   primary key (idusa)
+);
+
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1);
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Mario Ossandón', 'mario.hdoz1@gmail.com', '$2y$10$NEU3AG8yh18O55gz9qy6hueVF3vtoAD/MrVJKzc5cQLQP7U4nzAZq', 'CMiyQCEOdpzE9aYuFqdGncV4AwAanLgDnDiHb3JgPYzQ7doSI1JC62tO20U3', '2016-11-02 22:12:07', '2016-11-07 16:15:28'),
+(2, 'eee', 'asdf@asdf.com', '$2y$10$sOvfHFmySmeADJlByKSsqupckQUNRgplrSxJqk097rcrTmt.FrhwG', 'B2hnKylyGajKevA0u7ihPeGOBJLskNHbQ35UCxy7r8b2YDOLOqnSbFvDocf4', '2016-11-11 16:53:33', '2016-11-11 16:53:41');
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`),
+  ADD KEY `password_resets_token_index` (`token`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+
+alter table certificado add constraint fk_relationship_10 foreign key (idhta)
+      references herramienta (idhta) on delete restrict on update restrict;
+
+alter table certificado add constraint fk_relationship_18 foreign key (ruttec)
+      references tecnico (ruttec) on delete restrict on update restrict;
+
+alter table herramienta add constraint fk_relationship_3 foreign key (id)
+      references users (id) on delete restrict on update restrict;
+
+alter table herramienta add constraint fk_relationship_4 foreign key (idtipo)
+      references tipoherramienta (idtipo) on delete restrict on update restrict;
+
+alter table hojavida add constraint fk_relationship_1 foreign key (idhta)
+      references herramienta (idhta) on delete restrict on update restrict;
+
+alter table hojavida add constraint fk_relationship_16 foreign key (idprop)
+      references propietario (idprop) on delete restrict on update restrict;
+
+alter table hojavida add constraint fk_relationship_17 foreign key (rutenc)
+      references encargado (rutenc) on delete restrict on update restrict;
+
+alter table lectura1 add constraint fk_relationship_11 foreign key (idot)
+      references ot (idot) on delete restrict on update restrict;
+
+alter table lectura2 add constraint fk_relationship_12 foreign key (idot)
+      references ot (idot) on delete restrict on update restrict;
+
+alter table lectura3 add constraint fk_relationship_13 foreign key (idot)
+      references ot (idot) on delete restrict on update restrict;
+
+alter table movimiento add constraint fk_relationship_9 foreign key (idhta)
+      references herramienta (idhta) on delete restrict on update restrict;
+
+alter table ot add constraint fk_relationship_14 foreign key (idtor)
+      references torquimetro (idtor) on delete restrict on update restrict;
+
+alter table ot add constraint fk_relationship_15 foreign key (idmano)
+      references manometro (idmano) on delete restrict on update restrict;
+
+alter table ot add constraint fk_relationship_5 foreign key (idhta)
+      references herramienta (idhta) on delete restrict on update restrict;
+
+alter table usa add constraint fk_relationship_7 foreign key (idequi)
+      references equipo (idequi) on delete restrict on update restrict;
+
+alter table usa add constraint fk_relationship_8 foreign key (idcert)
+      references certificado (idcert) on delete restrict on upd

@@ -13,12 +13,12 @@
 					<div class="inner">
 						<h3>150</h3>
 
-						<p>New Orders</p>
+						<p>Stock de herramientas</p>
 					</div>
 					<div class="icon">
-						<i class="ion ion-bag"></i>
+						<i class="fa fa-wrench"></i>
 					</div>
-					<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="#" class="small-box-footer">Más info. <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -68,7 +68,7 @@
 			</div>
 			<!-- ./col -->
 		</div>
-		
+
 	<div class="container spark-screen">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
