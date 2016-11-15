@@ -1,168 +1,177 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-/*==============================================================*/
-/* Table: certificado                                           */
-/*==============================================================*/
-create table certificado
-(
-   idcert               int not null auto_increment,
-   idhta                int not null,
-   ruttec               varchar(10),
-   numtorquimetrocert   varchar(255) not null,
-   serietorquimetrometro varchar(255) not null,
-   numpartecert         char(100) not null,
-   numcert              varchar(100) not null,
-   validescert          varchar(100) not null,
-   proxmantencioncert   date not null,
-   fechaemisioncert     date not null,
-   primary key (idcert)
-);
 
-/*==============================================================*/
-/* Table: encargado                                             */
-/*==============================================================*/
-create table encargado
-(
-   rutenc               varchar(10) not null,
-   nombreenc            varchar(100) not null,
-   celularenc           varchar(13) not null,
-   correoenc            varchar(100) not null,
-   primary key (rutenc)
-);
+CREATE TABLE `certificado` (
+  `idcert` int(11) NOT NULL,
+  `idhta` int(11) NOT NULL,
+  `ruttec` varchar(10) CHARACTER SET latin1 DEFAULT NULL,
+  `numtorquimetrocert` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `serietorquimetrometro` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `numpartecert` char(100) CHARACTER SET latin1 NOT NULL,
+  `numcert` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `validescert` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `proxmantencioncert` date NOT NULL,
+  `fechaemisioncert` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*==============================================================*/
-/* Table: equipo                                                */
-/*==============================================================*/
-create table equipo
-(
-   idequi               int not null auto_increment,
-   nombreequi           varchar(100) not null,
-   primary key (idequi)
-);
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: herramienta                                           */
-/*==============================================================*/
-create table herramienta
-(
-   idhta                int not null auto_increment,
-   id                   int,
-   idtipo               int,
-   codigohta            varchar(255) not null,
-   seriehta             varchar(255) not null,
-   estadohta            varchar(255) not null,
-   descripcionhta       varchar(255) not null,
-   fechaadquisicionhta  date not null,
-   lugartrabajohta      varchar(255) not null,
-   frecuenciamantencionhta varchar(25) not null,
-   tipotrabajohta       varchar(255),
-   primary key (idhta)
-);
+--
+-- Estructura de tabla para la tabla `encargado`
+--
 
-/*==============================================================*/
-/* Table: hojavida                                              */
-/*==============================================================*/
-create table hojavida
-(
-   idhv                 int not null auto_increment,
-   idhta                int,
-   idprop               int,
-   rutenc               varchar(10),
-   primary key (idhv)
-);
+CREATE TABLE `encargado` (
+  `rutenc` varchar(10) CHARACTER SET latin1 NOT NULL,
+  `nombreenc` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `celularenc` varchar(13) CHARACTER SET latin1 NOT NULL,
+  `correoenc` varchar(100) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*==============================================================*/
-/* Table: lectura1                                              */
-/*==============================================================*/
-create table lectura1
-(
-   idlec1               int not null auto_increment,
-   idot                 int,
-   20lec1               int default 0,
-   25lec1               int default 0,
-   30lec1               int default 0,
-   35lec1               int default 0,
-   40lec1               int default 0,
-   45lec1               int default 0,
-   50lec1               int default 0,
-   55lec1               int default 0,
-   60lec1               int default 0,
-   65lec1               int default 0,
-   70lec1               int default 0,
-   75lec1               int default 0,
-   80lec1               int default 0,
-   85lec1               int default 0,
-   90lec1               int default 0,
-   primary key (idlec1)
-);
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: lectura2                                              */
-/*==============================================================*/
-create table lectura2
-(
-   idlec1               int not null auto_increment,
-   idot                 int,
-   20lec2               int default 0,
-   25lec2               int default 0,
-   30lec2               int default 0,
-   35lec2               int default 0,
-   40lec2               int default 0,
-   45lec2               int default 0,
-   50lec2               int default 0,
-   55lec2               int default 0,
-   60lec2               int default 0,
-   65lec2               int default 0,
-   70lec2               int default 0,
-   75lec2               int default 0,
-   80lec2               int default 0,
-   85lec2               int default 0,
-   90lec2               int default 0,
-   primary key (idlec1)
-);
+--
+-- Estructura de tabla para la tabla `equipo`
+--
 
-/*==============================================================*/
-/* Table: lectura3                                              */
-/*==============================================================*/
-create table lectura3
-(
-   idlec1               int not null auto_increment,
-   idot                 int,
-   20lec3               int default 0,
-   25lec3               int default 0,
-   30lec3               int default 0,
-   35lec3               int default 0,
-   40lec3               int default 0,
-   45lec3               int default 0,
-   50lec3               int default 0,
-   55lec3               int default 0,
-   60lec3               int default 0,
-   65lec3               int default 0,
-   70lec3               int default 0,
-   75lec3               int default 0,
-   80lec3               int default 0,
-   85lec3               int default 0,
-   90lec3               int default 0,
-   primary key (idlec1)
-);
+CREATE TABLE `equipo` (
+  `idequi` int(11) NOT NULL,
+  `nombreequi` varchar(100) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*==============================================================*/
-/* Table: manometro                                             */
-/*==============================================================*/
-create table manometro
-(
-   idmano               int not null auto_increment,
-   seriemano            varchar(100),
-   partemano            varchar(100),
-   marcamano            varchar(100),
-   modelomano           varchar(100),
-   unidadmano           varchar(50),
-   rangomano            varchar(50),
-   resolucionmano       varchar(50),
-   emisormano           varchar(100),
-   primary key (idmano)
-);
+-- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `herramienta`
+--
+
+CREATE TABLE `herramienta` (
+  `idhta` int(11) NOT NULL,
+  `id` int(11) UNSIGNED DEFAULT NULL,
+  `idtipo` int(11) DEFAULT NULL,
+  `codigohta` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `seriehta` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `estadohta` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `descripcionhta` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `fechaadquisicionhta` date NOT NULL,
+  `lugartrabajohta` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `frecuenciamantencionhta` varchar(25) CHARACTER SET latin1 NOT NULL,
+  `tipotrabajohta` varchar(255) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `hojavida`
+--
+
+CREATE TABLE `hojavida` (
+  `idhv` int(11) NOT NULL,
+  `idhta` int(11) DEFAULT NULL,
+  `idprop` int(11) DEFAULT NULL,
+  `rutenc` varchar(10) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `lectura1`
+--
+
+CREATE TABLE `lectura1` (
+  `idlec1` int(11) NOT NULL,
+  `idot` int(11) DEFAULT NULL,
+  `20lec1` int(11) DEFAULT '0',
+  `25lec1` int(11) DEFAULT '0',
+  `30lec1` int(11) DEFAULT '0',
+  `35lec1` int(11) DEFAULT '0',
+  `40lec1` int(11) DEFAULT '0',
+  `45lec1` int(11) DEFAULT '0',
+  `50lec1` int(11) DEFAULT '0',
+  `55lec1` int(11) DEFAULT '0',
+  `60lec1` int(11) DEFAULT '0',
+  `65lec1` int(11) DEFAULT '0',
+  `70lec1` int(11) DEFAULT '0',
+  `75lec1` int(11) DEFAULT '0',
+  `80lec1` int(11) DEFAULT '0',
+  `85lec1` int(11) DEFAULT '0',
+  `90lec1` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `lectura2`
+--
+
+CREATE TABLE `lectura2` (
+  `idlec1` int(11) NOT NULL,
+  `idot` int(11) DEFAULT NULL,
+  `20lec2` int(11) DEFAULT '0',
+  `25lec2` int(11) DEFAULT '0',
+  `30lec2` int(11) DEFAULT '0',
+  `35lec2` int(11) DEFAULT '0',
+  `40lec2` int(11) DEFAULT '0',
+  `45lec2` int(11) DEFAULT '0',
+  `50lec2` int(11) DEFAULT '0',
+  `55lec2` int(11) DEFAULT '0',
+  `60lec2` int(11) DEFAULT '0',
+  `65lec2` int(11) DEFAULT '0',
+  `70lec2` int(11) DEFAULT '0',
+  `75lec2` int(11) DEFAULT '0',
+  `80lec2` int(11) DEFAULT '0',
+  `85lec2` int(11) DEFAULT '0',
+  `90lec2` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `lectura3`
+--
+
+CREATE TABLE `lectura3` (
+  `idlec1` int(11) NOT NULL,
+  `idot` int(11) DEFAULT NULL,
+  `20lec3` int(11) DEFAULT '0',
+  `25lec3` int(11) DEFAULT '0',
+  `30lec3` int(11) DEFAULT '0',
+  `35lec3` int(11) DEFAULT '0',
+  `40lec3` int(11) DEFAULT '0',
+  `45lec3` int(11) DEFAULT '0',
+  `50lec3` int(11) DEFAULT '0',
+  `55lec3` int(11) DEFAULT '0',
+  `60lec3` int(11) DEFAULT '0',
+  `65lec3` int(11) DEFAULT '0',
+  `70lec3` int(11) DEFAULT '0',
+  `75lec3` int(11) DEFAULT '0',
+  `80lec3` int(11) DEFAULT '0',
+  `85lec3` int(11) DEFAULT '0',
+  `90lec3` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `manometro`
+--
+
+CREATE TABLE `manometro` (
+  `idmano` int(11) NOT NULL,
+  `seriemano` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `partemano` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `marcamano` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `modelomano` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `unidadmano` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `rangomano` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `resolucionmano` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `emisormano` varchar(100) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `migrations`
+--
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
@@ -170,47 +179,62 @@ CREATE TABLE `migrations` (
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `migrations`
+--
 
-/*==============================================================*/
-/* Table: movimiento                                            */
-/*==============================================================*/
-create table movimiento
-(
-   idmov                int not null auto_increment,
-   idhta                int not null,
-   fechamov             date not null,
-   movimientomov        varchar(100),
-   razonmov             varchar(255),
-   documento            varchar(255),
-   primary key (idmov)
-);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1);
 
-/*==============================================================*/
-/* Table: ot                                                    */
-/*==============================================================*/
-create table ot
-(
-   idot                 int not null auto_increment,
-   idhta                int,
-   idtor                int,
-   idmano               int,
-   20hta                int default 0,
-   25hta                int default 0,
-   30hta                int default 0,
-   35hta                int default 0,
-   40hta                int default 0,
-   45hta                int default 0,
-   50hta                int default 0,
-   55hta                int default 0,
-   60hta                int default 0,
-   65hta                int default 0,
-   70hta                int default 0,
-   75hta                int default 0,
-   80hta                int default 0,
-   85hta                int default 0,
-   90hta                int default 0,
-   primary key (idot)
-);
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `movimiento`
+--
+
+CREATE TABLE `movimiento` (
+  `idmov` int(11) NOT NULL,
+  `idhta` int(11) NOT NULL,
+  `fechamov` date NOT NULL,
+  `movimientomov` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `razonmov` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `documento` varchar(255) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ot`
+--
+
+CREATE TABLE `ot` (
+  `idot` int(11) NOT NULL,
+  `idhta` int(11) DEFAULT NULL,
+  `idtor` int(11) DEFAULT NULL,
+  `idmano` int(11) DEFAULT NULL,
+  `20hta` int(11) DEFAULT '0',
+  `25hta` int(11) DEFAULT '0',
+  `30hta` int(11) DEFAULT '0',
+  `35hta` int(11) DEFAULT '0',
+  `40hta` int(11) DEFAULT '0',
+  `45hta` int(11) DEFAULT '0',
+  `50hta` int(11) DEFAULT '0',
+  `55hta` int(11) DEFAULT '0',
+  `60hta` int(11) DEFAULT '0',
+  `65hta` int(11) DEFAULT '0',
+  `70hta` int(11) DEFAULT '0',
+  `75hta` int(11) DEFAULT '0',
+  `80hta` int(11) DEFAULT '0',
+  `85hta` int(11) DEFAULT '0',
+  `90hta` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `password_resets`
+--
 
 CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -218,73 +242,82 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: propietario                                           */
-/*==============================================================*/
-create table propietario
-(
-   idprop               int not null auto_increment,
-   nombreprop           varchar(100),
-   rutprop              varchar(10),
-   nombrepersprop       varchar(100),
-   celularprop          varchar(100),
-   primary key (idprop)
-);
+--
+-- Estructura de tabla para la tabla `propietario`
+--
 
-/*==============================================================*/
-/* Table: tecnico                                               */
-/*==============================================================*/
-create table tecnico
-(
-   ruttec               varchar(10) not null,
-   nombretec            varchar(100) not null,
-   celulartec           varchar(13) not null,
-   correotec            varchar(100) not null,
-   primary key (ruttec)
-);
+CREATE TABLE `propietario` (
+  `idprop` int(11) NOT NULL,
+  `nombreprop` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `rutprop` varchar(10) CHARACTER SET latin1 DEFAULT NULL,
+  `nombrepersprop` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `celularprop` varchar(100) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*==============================================================*/
-/* Table: tipoherramienta                                       */
-/*==============================================================*/
-create table tipoherramienta
-(
-   idtipo               int not null auto_increment,
-   marcatipo            varchar(100) not null,
-   modelotipo           varchar(150) not null,
-   tipotipo             varchar(100) not null,
-   ottipo               bool default 0,
-   primary key (idtipo)
-);
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: torquimetro                                           */
-/*==============================================================*/
-create table torquimetro
-(
-   idtor                int not null auto_increment,
-   serietor             varchar(100),
-   partetor             varchar(100),
-   marcator             varchar(100),
-   modelotor            varchar(100),
-   unidadtor            varchar(50),
-   rangotor             varchar(50),
-   resoluciontor        varchar(50),
-   emisortor            varchar(100),
-   primary key (idtor)
-);
+--
+-- Estructura de tabla para la tabla `tecnico`
+--
 
-/*==============================================================*/
-/* Table: usa                                                   */
-/*==============================================================*/
-create table usa
-(
-   idusa                int not null auto_increment,
-   idcert               int not null,
-   idequi               int not null,
-   primary key (idusa)
-);
+CREATE TABLE `tecnico` (
+  `ruttec` varchar(10) CHARACTER SET latin1 NOT NULL,
+  `nombretec` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `celulartec` varchar(13) CHARACTER SET latin1 NOT NULL,
+  `correotec` varchar(100) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipoherramienta`
+--
+
+CREATE TABLE `tipoherramienta` (
+  `idtipo` int(11) NOT NULL,
+  `marcatipo` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `modelotipo` varchar(150) CHARACTER SET latin1 NOT NULL,
+  `tipotipo` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `ottipo` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `torquimetro`
+--
+
+CREATE TABLE `torquimetro` (
+  `idtor` int(11) NOT NULL,
+  `serietor` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `partetor` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `marcator` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `modelotor` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `unidadtor` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `rangotor` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `resoluciontor` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `emisortor` varchar(100) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usa`
+--
+
+CREATE TABLE `usa` (
+  `idusa` int(11) NOT NULL,
+  `idcert` int(11) NOT NULL,
+  `idequi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
@@ -296,16 +329,102 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1);
+--
+-- Volcado de datos para la tabla `users`
+--
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Mario Ossandón', 'mario.hdoz1@gmail.com', '$2y$10$NEU3AG8yh18O55gz9qy6hueVF3vtoAD/MrVJKzc5cQLQP7U4nzAZq', 'CMiyQCEOdpzE9aYuFqdGncV4AwAanLgDnDiHb3JgPYzQ7doSI1JC62tO20U3', '2016-11-02 22:12:07', '2016-11-07 16:15:28'),
-(2, 'eee', 'asdf@asdf.com', '$2y$10$sOvfHFmySmeADJlByKSsqupckQUNRgplrSxJqk097rcrTmt.FrhwG', 'B2hnKylyGajKevA0u7ihPeGOBJLskNHbQ35UCxy7r8b2YDOLOqnSbFvDocf4', '2016-11-11 16:53:33', '2016-11-11 16:53:41');
+(3, 'Mario Ossandón', 'mario.hdoz1@gmail.com', '$2y$10$L6ZU2D5Xx4VPyTXvqyMY9e1wDNNiY6eisGtEvOLS/isc1Ye6CabXm', 'UMpA7w1VFa04qHg4UYdgQHMZglT9tNcZ5IphzvGHrWYzuPFUCIrGM7M0RWhO', '2016-11-14 21:27:17', '2016-11-14 21:27:41');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `certificado`
+--
+ALTER TABLE `certificado`
+  ADD PRIMARY KEY (`idcert`),
+  ADD KEY `fk_posee` (`idhta`),
+  ADD KEY `fk_relationship_18` (`ruttec`);
+
+--
+-- Indices de la tabla `encargado`
+--
+ALTER TABLE `encargado`
+  ADD PRIMARY KEY (`rutenc`);
+
+--
+-- Indices de la tabla `equipo`
+--
+ALTER TABLE `equipo`
+  ADD PRIMARY KEY (`idequi`);
+
+--
+-- Indices de la tabla `herramienta`
+--
+ALTER TABLE `herramienta`
+  ADD PRIMARY KEY (`idhta`),
+  ADD KEY `fk_es` (`idtipo`),
+  ADD KEY `fk_ingresa` (`id`);
+
+--
+-- Indices de la tabla `hojavida`
+--
+ALTER TABLE `hojavida`
+  ADD PRIMARY KEY (`idhv`),
+  ADD KEY `fk_relationship_16` (`idprop`),
+  ADD KEY `fk_relationship_17` (`rutenc`),
+  ADD KEY `fk_tiene` (`idhta`);
+
+--
+-- Indices de la tabla `lectura1`
+--
+ALTER TABLE `lectura1`
+  ADD PRIMARY KEY (`idlec1`),
+  ADD KEY `fk_relationship_11` (`idot`);
+
+--
+-- Indices de la tabla `lectura2`
+--
+ALTER TABLE `lectura2`
+  ADD PRIMARY KEY (`idlec1`),
+  ADD KEY `fk_relationship_12` (`idot`);
+
+--
+-- Indices de la tabla `lectura3`
+--
+ALTER TABLE `lectura3`
+  ADD PRIMARY KEY (`idlec1`),
+  ADD KEY `fk_relationship_13` (`idot`);
+
+--
+-- Indices de la tabla `manometro`
+--
+ALTER TABLE `manometro`
+  ADD PRIMARY KEY (`idmano`);
+
+--
+-- Indices de la tabla `migrations`
+--
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `movimiento`
+--
+ALTER TABLE `movimiento`
+  ADD PRIMARY KEY (`idmov`),
+  ADD KEY `fk_relationship_9` (`idhta`);
+
+--
+-- Indices de la tabla `ot`
+--
+ALTER TABLE `ot`
+  ADD PRIMARY KEY (`idot`),
+  ADD KEY `fk_relationship_14` (`idtor`),
+  ADD KEY `fk_relationship_15` (`idmano`),
+  ADD KEY `fk_relationship_5` (`idhta`);
 
 --
 -- Indices de la tabla `password_resets`
@@ -313,6 +432,38 @@ ALTER TABLE `migrations`
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`),
   ADD KEY `password_resets_token_index` (`token`);
+
+--
+-- Indices de la tabla `propietario`
+--
+ALTER TABLE `propietario`
+  ADD PRIMARY KEY (`idprop`);
+
+--
+-- Indices de la tabla `tecnico`
+--
+ALTER TABLE `tecnico`
+  ADD PRIMARY KEY (`ruttec`);
+
+--
+-- Indices de la tabla `tipoherramienta`
+--
+ALTER TABLE `tipoherramienta`
+  ADD PRIMARY KEY (`idtipo`);
+
+--
+-- Indices de la tabla `torquimetro`
+--
+ALTER TABLE `torquimetro`
+  ADD PRIMARY KEY (`idtor`);
+
+--
+-- Indices de la tabla `usa`
+--
+ALTER TABLE `usa`
+  ADD PRIMARY KEY (`idusa`),
+  ADD KEY `fk_relationship_7` (`idequi`),
+  ADD KEY `fk_relationship_8` (`idcert`);
 
 --
 -- Indices de la tabla `users`
@@ -326,61 +477,150 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `certificado`
+--
+ALTER TABLE `certificado`
+  MODIFY `idcert` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `equipo`
+--
+ALTER TABLE `equipo`
+  MODIFY `idequi` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `herramienta`
+--
+ALTER TABLE `herramienta`
+  MODIFY `idhta` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `hojavida`
+--
+ALTER TABLE `hojavida`
+  MODIFY `idhv` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `lectura1`
+--
+ALTER TABLE `lectura1`
+  MODIFY `idlec1` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `lectura2`
+--
+ALTER TABLE `lectura2`
+  MODIFY `idlec1` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `lectura3`
+--
+ALTER TABLE `lectura3`
+  MODIFY `idlec1` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `manometro`
+--
+ALTER TABLE `manometro`
+  MODIFY `idmano` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT de la tabla `movimiento`
+--
+ALTER TABLE `movimiento`
+  MODIFY `idmov` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `ot`
+--
+ALTER TABLE `ot`
+  MODIFY `idot` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `propietario`
+--
+ALTER TABLE `propietario`
+  MODIFY `idprop` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tipoherramienta`
+--
+ALTER TABLE `tipoherramienta`
+  MODIFY `idtipo` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `torquimetro`
+--
+ALTER TABLE `torquimetro`
+  MODIFY `idtor` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `usa`
+--
+ALTER TABLE `usa`
+  MODIFY `idusa` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- Restricciones para tablas volcadas
+--
 
+--
+-- Filtros para la tabla `certificado`
+--
+ALTER TABLE `certificado`
+  ADD CONSTRAINT `fk_posee` FOREIGN KEY (`idhta`) REFERENCES `herramienta` (`idhta`),
+  ADD CONSTRAINT `fk_relationship_18` FOREIGN KEY (`ruttec`) REFERENCES `tecnico` (`ruttec`);
 
-alter table certificado add constraint fk_relationship_10 foreign key (idhta)
-      references herramienta (idhta) on delete restrict on update restrict;
+--
+-- Filtros para la tabla `herramienta`
+--
+ALTER TABLE `herramienta`
+  ADD CONSTRAINT `fk_es` FOREIGN KEY (`idtipo`) REFERENCES `tipoherramienta` (`idtipo`),
+  ADD CONSTRAINT `fk_ingresa` FOREIGN KEY (`id`) REFERENCES `users` (`id`);
 
-alter table certificado add constraint fk_relationship_18 foreign key (ruttec)
-      references tecnico (ruttec) on delete restrict on update restrict;
+--
+-- Filtros para la tabla `hojavida`
+--
+ALTER TABLE `hojavida`
+  ADD CONSTRAINT `fk_relationship_16` FOREIGN KEY (`idprop`) REFERENCES `propietario` (`idprop`),
+  ADD CONSTRAINT `fk_relationship_17` FOREIGN KEY (`rutenc`) REFERENCES `encargado` (`rutenc`),
+  ADD CONSTRAINT `fk_tiene` FOREIGN KEY (`idhta`) REFERENCES `herramienta` (`idhta`);
 
-alter table herramienta add constraint fk_relationship_3 foreign key (id)
-      references users (id) on delete restrict on update restrict;
+--
+-- Filtros para la tabla `lectura1`
+--
+ALTER TABLE `lectura1`
+  ADD CONSTRAINT `fk_relationship_11` FOREIGN KEY (`idot`) REFERENCES `ot` (`idot`);
 
-alter table herramienta add constraint fk_relationship_4 foreign key (idtipo)
-      references tipoherramienta (idtipo) on delete restrict on update restrict;
+--
+-- Filtros para la tabla `lectura2`
+--
+ALTER TABLE `lectura2`
+  ADD CONSTRAINT `fk_relationship_12` FOREIGN KEY (`idot`) REFERENCES `ot` (`idot`);
 
-alter table hojavida add constraint fk_relationship_1 foreign key (idhta)
-      references herramienta (idhta) on delete restrict on update restrict;
+--
+-- Filtros para la tabla `lectura3`
+--
+ALTER TABLE `lectura3`
+  ADD CONSTRAINT `fk_relationship_13` FOREIGN KEY (`idot`) REFERENCES `ot` (`idot`);
 
-alter table hojavida add constraint fk_relationship_16 foreign key (idprop)
-      references propietario (idprop) on delete restrict on update restrict;
+--
+-- Filtros para la tabla `movimiento`
+--
+ALTER TABLE `movimiento`
+  ADD CONSTRAINT `fk_relationship_9` FOREIGN KEY (`idhta`) REFERENCES `herramienta` (`idhta`);
 
-alter table hojavida add constraint fk_relationship_17 foreign key (rutenc)
-      references encargado (rutenc) on delete restrict on update restrict;
+--
+-- Filtros para la tabla `ot`
+--
+ALTER TABLE `ot`
+  ADD CONSTRAINT `fk_relationship_14` FOREIGN KEY (`idtor`) REFERENCES `torquimetro` (`idtor`),
+  ADD CONSTRAINT `fk_relationship_15` FOREIGN KEY (`idmano`) REFERENCES `manometro` (`idmano`),
+  ADD CONSTRAINT `fk_relationship_5` FOREIGN KEY (`idhta`) REFERENCES `herramienta` (`idhta`);
 
-alter table lectura1 add constraint fk_relationship_11 foreign key (idot)
-      references ot (idot) on delete restrict on update restrict;
+--
+-- Filtros para la tabla `usa`
+--
+ALTER TABLE `usa`
+  ADD CONSTRAINT `fk_relationship_7` FOREIGN KEY (`idequi`) REFERENCES `equipo` (`idequi`),
+  ADD CONSTRAINT `fk_relationship_8` FOREIGN KEY (`idcert`) REFERENCES `certificado` (`idcert`);
 
-alter table lectura2 add constraint fk_relationship_12 foreign key (idot)
-      references ot (idot) on delete restrict on update restrict;
-
-alter table lectura3 add constraint fk_relationship_13 foreign key (idot)
-      references ot (idot) on delete restrict on update restrict;
-
-alter table movimiento add constraint fk_relationship_9 foreign key (idhta)
-      references herramienta (idhta) on delete restrict on update restrict;
-
-alter table ot add constraint fk_relationship_14 foreign key (idtor)
-      references torquimetro (idtor) on delete restrict on update restrict;
-
-alter table ot add constraint fk_relationship_15 foreign key (idmano)
-      references manometro (idmano) on delete restrict on update restrict;
-
-alter table ot add constraint fk_relationship_5 foreign key (idhta)
-      references herramienta (idhta) on delete restrict on update restrict;
-
-alter table usa add constraint fk_relationship_7 foreign key (idequi)
-      references equipo (idequi) on delete restrict on update restrict;
-
-alter table usa add constraint fk_relationship_8 foreign key (idcert)
-      references certificado (idcert) on delete restrict on upd
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -24,7 +24,7 @@
                   <li class="active"><a href="{{ url('home') }}"><i class='fa fa-plus '></i><span>Ingresar herramienta</span></a></li>
                   <li class="active"><a href="{{ url('home') }}"><i class='fa fa-pencil '></i><span>Modificar herramienta</span></a></li>
                   <li class="active"><a href="{{ url('home') }}"><i class='fa fa-minus  '></i><span>Eliminar herramienta</span></a></li>
-                  <li class="active"><a href="{{ url('home') }}"><i class='fa fa-cog '></i><span>Tipos de herramientas</span></a></li>
+                  <li class="active"><a href="{{ url('tipoherramienta') }}"><i class='fa fa-cog '></i><span>Tipos de herramientas</span></a></li>
                 </ul>
             </li>
             <li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li>
